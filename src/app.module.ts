@@ -1,8 +1,21 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Review, Restaurant, User, Admin, Visitor, RestaurantOwner, ReviewableEntity } from './dal/entities';
+
+import { 
+  ReviewableEntity, 
+  Restaurant, 
+  User, 
+  Visitor, 
+  Admin, 
+  RestaurantOwner, 
+  Review 
+} from './dal/entities';
+
+
 import { ReviewService } from './bll/review.service';
 import { ReviewRepository } from './dal/review.repository';
+import { RestaurantService } from './bll/restaurant.service';
+import { RestaurantController } from './presentation/restaurant.controller';
 
 @Module({
   imports: [
@@ -13,13 +26,27 @@ import { ReviewRepository } from './dal/review.repository';
       username: 'postgres',
       password: 'qwerty1234',
       database: 'tripadvisor_db',
-      entities: [Review, Restaurant, User, Admin, Visitor, RestaurantOwner, ReviewableEntity],
-      synchronize: true, 
+      entities: [ReviewableEntity, Restaurant, User, Visitor, Admin, RestaurantOwner, Review],
+      synchronize: true,
     }),
-    TypeOrmModule.forFeature([Review, Restaurant, User]),
+    
+    TypeOrmModule.forFeature([
+      ReviewableEntity, 
+      Restaurant, 
+      User, 
+      Visitor, 
+      Admin, 
+      RestaurantOwner, 
+      Review
+    ]),
+  ],
+  controllers: [
+    RestaurantController, 
   ],
   providers: [
+    RestaurantService,
     ReviewService,
+
     {
       provide: 'IReviewRepository',
       useClass: ReviewRepository,
