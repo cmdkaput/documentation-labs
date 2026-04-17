@@ -32,7 +32,7 @@ export class Review {
   @Column('text') comment: string;
   @Column({ default: 'PENDING' }) status: string;
 
-  @ManyToOne(() => Restaurant, (res) => res.reviews, { cascade: true })
+  @ManyToOne(() => Restaurant, (res) => res.reviews, { onDelete: 'CASCADE' })
   restaurant: Restaurant;
 
   @ManyToOne(() => User, { cascade: true })
