@@ -1,4 +1,11 @@
 import { Module } from '@nestjs/common';
+<<<<<<< HEAD
+import { ConfigModule } from '@nestjs/config';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot(),
+=======
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Review, Restaurant, User, Admin, Visitor, RestaurantOwner, ReviewableEntity } from './dal/entities';
 import { ReviewService } from './bll/review.service';
@@ -24,6 +31,7 @@ import { ReviewRepository } from './dal/review.repository';
       provide: 'IReviewRepository',
       useClass: ReviewRepository,
     },
+>>>>>>> 3cdafd1f02c94cf7508146022d1762664a130728
   ],
 })
 export class AppModule {}

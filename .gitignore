@@ -1,3 +1,7 @@
+node_modules/
+dist/
+npm-debug.log
+
 # compiled output
 /dist
 /node_modules
@@ -54,3 +58,4 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+>>>>>>> 3cdafd1f02c94cf7508146022d1762664a130728
